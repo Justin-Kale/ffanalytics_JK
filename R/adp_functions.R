@@ -22,7 +22,7 @@ rts_draft <- function(metric = c("adp", "aav")){
     }
 
     rts_json = httr2::request(draft_url) %>%
-      httr2::req_user_agent("ffanalytics R package (https://github.com/FantasyFootballAnalytics/ffanalytics)") %>%
+      httr2::req_user_agent("ffanalytics R package (https://github.com/Justin-Kale/ffanalytics_JK)") %>%
       httr2::req_perform() %>%
       httr2::resp_body_json()
 
