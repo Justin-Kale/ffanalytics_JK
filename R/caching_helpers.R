@@ -13,7 +13,7 @@
 clear_ffanalytics_cache = function(ffa_objects = NULL) {
 
   ensure_cache_dir_exists()
-  cache_dir = tools::R_user_dir("ffanalytics", "cache")
+  cache_dir = tools::R_user_dir("ffanalyticsJK", "cache")
   current_file_names = list.files(cache_dir, full.names = TRUE)
 
 
@@ -44,7 +44,7 @@ clear_ffanalytics_cache = function(ffa_objects = NULL) {
 #' @return A \code{data.frame} with the object (scrape) name, and time since caching
 #' @export
 list_ffanalytics_cache = function(quiet = FALSE) {
-  cache_dir = tools::R_user_dir("ffanalytics", "cache")
+  cache_dir = tools::R_user_dir("ffanalyticsJK", "cache")
   clear_cache_by_time()
 
   current_file_names = list.files(cache_dir)
@@ -66,25 +66,25 @@ list_ffanalytics_cache = function(quiet = FALSE) {
 cache_object = function(object, file_name) {
   ensure_cache_dir_exists()
   clear_cache_by_time()
-  cache_dir = tools::R_user_dir("ffanalytics", "cache")
+  cache_dir = tools::R_user_dir("ffanalyticsJK", "cache")
 
   current_file_names = list.files(cache_dir)
 
   if(!file_name %in% current_file_names) {
     saveRDS(
       object,
-      file.path(tools::R_user_dir("ffanalytics", "cache"), file_name)
+      file.path(tools::R_user_dir("ffanalyticsJK", "cache"), file_name)
     )
   }
 }
 
 get_cached_object = function(file_name) {
-  cache_dir = tools::R_user_dir("ffanalytics", "cache")
+  cache_dir = tools::R_user_dir("ffanalyticsJK", "cache")
   readRDS(file.path(cache_dir, file_name))
 }
 
 ensure_cache_dir_exists = function() {
-  cache_dir = tools::R_user_dir("ffanalytics", "cache")
+  cache_dir = tools::R_user_dir("ffanalyticsJK", "cache")
 
   if(!file.exists(cache_dir)) {
     dir.create(cache_dir, recursive = TRUE, showWarnings = FALSE)
