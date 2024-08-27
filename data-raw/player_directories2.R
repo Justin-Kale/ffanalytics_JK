@@ -10,7 +10,7 @@
 devtools::load_all()
 library(dplyr)
 
-scrape_cbs = ffanalytics:::scrape_cbs()
+scrape_cbs = ffanalyticsJK:::scrape_cbs()
 
 final_cbs = dplyr::bind_rows(scrape_cbs) %>%
   dplyr::transmute(merge_id = gsub("[[:punct:]]|\\s+", "", tolower(player)),
@@ -20,7 +20,7 @@ final_cbs = dplyr::bind_rows(scrape_cbs) %>%
 
 #### FFToday Players #### ----
 
-scrape_fft = ffanalytics:::scrape_fftoday()
+scrape_fft = ffanalyticsJK:::scrape_fftoday()
 
 final_fft = dplyr::bind_rows(scrape_fft) %>%
   dplyr::transmute(player = ifelse(pos == "DST", team, player),
@@ -51,7 +51,7 @@ final_fp_all = dplyr::bind_rows(scrape_fp) %>%
 
 #### NFL Players #### ----
 
-scrape_nfl = ffanalytics:::scrape_nfl()
+scrape_nfl = ffanalyticsJK:::scrape_nfl()
 
 final_nfl = dplyr::bind_rows(scrape_nfl) %>%
   transmute(player = ifelse(pos == "DST", team, player),
@@ -80,7 +80,7 @@ final_nf = scrape_nf %>%
 
 #### RTSports #### ----
 
-rt_scrape = ffanalytics:::scrape_rtsports()
+rt_scrape = ffanalyticsJK:::scrape_rtsports()
 
 final_rt = rt_scrape %>%
   dplyr::bind_rows() %>%
@@ -108,7 +108,7 @@ final_flfl = ff_scrape %>%
 
 #### Yahoo ----
 
-yahoo_draft_info = ffanalytics:::yahoo_draft()
+yahoo_draft_info = ffanalyticsJK:::yahoo_draft()
 
 final_yahoo = yahoo_draft_info %>%
   transmute(merge_id = gsub("[[:punct:]]|\\s+", "", tolower(player_name)),
@@ -118,7 +118,7 @@ final_yahoo = yahoo_draft_info %>%
 
 
 # Getting ESPN ID's
-scrape_espn = ffanalytics:::scrape_espn()
+scrape_espn = ffanalyticsJK:::scrape_espn()
 
 final_espn = scrape_espn %>%
   dplyr::bind_rows() %>%
@@ -137,7 +137,7 @@ gc()
 
 # updating player_ids table by name & pos
 
-curr_ids = ffanalytics:::player_ids
+curr_ids = ffanalyticsJK:::player_ids
 
 my_fl_ids = httr::GET("https://api.myfantasyleague.com/2024/export?TYPE=players&L=&APIKEY=&DETAILS=1&SINCE=&PLAYERS=&JSON=1") %>%
   httr::content() %>%
