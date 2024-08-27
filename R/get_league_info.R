@@ -11,7 +11,7 @@ get_league_info_sleeper = function(league_id) {
 
   resp_json = league_url %>%
     httr2::request() %>%
-    httr2::req_user_agent("ffanalytics R package (https://github.com/FantasyFootballAnalytics/ffanalytics)") %>%
+    httr2::req_user_agent("ffanalytics R package (https://github.com/Justin-Kale/ffanalytics_JK)") %>%
     httr2::req_perform() %>%
     httr2::resp_body_json(check_type = FALSE)
 
@@ -33,7 +33,7 @@ get_league_info_sleeper = function(league_id) {
 
 clean_scoring_sleeper = function(scoring_obj) {
 
-  s_obj = ffanalytics:::scoring_empty
+  s_obj = ffanalyticsJK:::scoring_empty
 
   s_obj = .
   s_obj$dst$dst_blk = scoring_obj$blk_kick
