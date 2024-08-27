@@ -44,7 +44,7 @@ scrape_data <- function(
 
   # Running the sefl-contained scrapes (temporary, untill new scrapes are finalized)
   l_selfcont = lapply(src, function(self_src) {
-    scrape_fun = get(paste0("scrape_", tolower(self_src)), mode = "function", envir = asNamespace("ffanalytics"))
+    scrape_fun = get(paste0("scrape_", tolower(self_src)), mode = "function", envir = asNamespace("ffanalyticsJK"))
     fun_formals = formals(scrape_fun)
     fun_args = args[names(args) %in% names(fun_formals)]
     fun_args$pos = intersect(fun_args$pos, eval(fun_formals$pos))
